@@ -38,12 +38,12 @@ class extractMTD:
         return self.lst
             
     def SunAngle(self, dir, metadata):
-    """ Only in granule """
+    #""" Only in granule """
         self.dir = os.chdir(dir)
         self.root = ET.parse(metadata).getroot()
         for Mean_Sun_Angle in self.root.iter('Mean_Sun_Angle'):
-            self.lst[6] Mean_Sun_Angle.find('ZENITH_ANGLE').text
-            self.lst[7] Mean_Sun_Angle.find('AZIMUTH_ANGLE').text
+            self.lst[6] = Mean_Sun_Angle.find('ZENITH_ANGLE').text
+            self.lst[7] = Mean_Sun_Angle.find('AZIMUTH_ANGLE').text
     
         return self.lst
         
