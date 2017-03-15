@@ -29,16 +29,15 @@ class extractMTD:
             self.lst[0] = Product_Info.find('PRODUCT_URI').text # Product name
             self.lst[1] = Product_Info.find("PRODUCT_START_TIME").text #Start time
             self.lst[2] = Product_Info.find("PRODUCT_STOP_TIME").text #End time or stop time
-            self.lst[3] = self.lst[1]==sel.lst[2]                
+            self.lst[3] = self.lst[1]==self.lst[2]                
             self.lst[4] = Product_Info.find("GENERATION_TIME").text   # Gin and Tonic
         
-        for Quality_Indicators_Info in root.iter('Cloud_Coverage_Assessment'):
+        for Quality_Indicators_Info in self.root.iter('Cloud_Coverage_Assessment'):
             self.lst[5] = Quality_Indicators_Info.text
     
         return self.lst
             
     def SunAngle(self, dir, metadata):
-    #""" Only in granule """
         self.dir = os.chdir(dir)
         self.root = ET.parse(metadata).getroot()
         for Mean_Sun_Angle in self.root.iter('Mean_Sun_Angle'):
